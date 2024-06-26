@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link type="image/png" rel="icon" href="logos/iconbg.png">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <title>Churankú - Lienzos Vivos</title>
+</head>
+<body class="product-body">
+    <div class="page-container">
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html">
+                <img src="logos/logo.png"  alt="Logo">
+                </a>
+            </div>
+            <div class="header-right">
+                <form class="search-form">
+                    <input type="text" placeholder="Buscar...">
+                    <img src="icons/search.png" alt="Buscar" class="search-icon">
+                </form>
+            </div>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="quienessomos.html">Quienes Somos</a>
+        </div>
+        <div class="img-container">
+            <div class="thumbnails">
+                <img src="fotos/morado-6.jpg" alt="Vestido 1" class="active" onclick="changeImage(0)">
+                <img src="fotos/morado-7.jpg" alt="Vestido 2" onclick="changeImage(1)">
+                <img src="fotos/morado-10.jpg" alt="Vestido 3" onclick="changeImage(2)">
+                <img src="fotos/morado-21.jpg" alt="Vestido 3" onclick="changeImage(3)">
+            </div>
+            <div class="main-image">
+                <img src="fotos/morado-6.jpg" alt="Vestido Principal" id="mainImage">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Vestido estilo Sirena</div>
+                <div class="product-price">$300.00</div>
+                <div class="product-description">
+                    <h4>Descripcion</h4>
+                    <p>Vestido de gala</p>
+                    <p>Estilo Sirena</p>
+                    <p>Escote en V</p>
+                    <p>Contiene apliques y pedrería</p>
+                </div>
+                
+                <div class="selectors">
+                    <label for="talla">Talla:</label>
+                    <select id="talla">
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                    </select>
+                    <label for="color">Color:</label>
+                    <select id="color" onchange="updateColorSample()">
+                        <option value="#512d5d" data-color="#512d5d">Purpura</option>
+                        <option value="#000000" data-color="#000000">Negro</option>
+                        <option value="#992B13" data-color="#992B13">Rojo</option>
+                        <option value="#6EA6C5" data-color="#6EA6C5">Celeste</option>
+                        <option value="#D72598" data-color="#D72598">Fucsia</option>
+                    </select>
+                    <span id="colorSample" class="color-sample"></span>
+                </div>
+                
+                <div class="button-cart-container">
+                    <a href="#" class="cta-button">
+                        <img src="icons/carrito1.png" alt="Carrito">
+                        <span>Añadir al carrito</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            const thumbnails = document.querySelectorAll('.thumbnails img');
+            const mainImage = document.getElementById('mainImage');
+        
+            function changeImage(index) {
+                thumbnails.forEach((thumbnail, i) => {
+                    if (i === index) {
+                        thumbnail.classList.add('active');
+                        mainImage.src = thumbnail.src;
+                    } else {
+                        thumbnail.classList.remove('active');
+                    }
+                });
+            }
+            function updateColorSample() {
+                const colorSelect = document.getElementById('color');
+                const colorSample = document.getElementById('colorSample');
+                const selectedColor = colorSelect.options[colorSelect.selectedIndex].getAttribute('data-color');
+                colorSample.style.backgroundColor = selectedColor;
+            }
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                updateColorSample(); // Update color sample on page load
+            });
+            
+        </script>
+        <footer>
+            <div class="footer-left">
+                <a href="index.html">
+                    <img src="logos/footer.png" alt="Logo">
+                </a>
+                <p>© 2024 Churankú. Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-right">
+                <div>
+                    <p>Siguenos en nuestras redes sociales</p>
+                </div>
+                
+                <div>
+                    <a href="http://instagram.com/churankuu">
+                        <img src="icons/insta.png" alt="Instagram">
+                    </a>
+                </div>      
+    
+            </div>
+            
+        </footer>
+    </div>
+    
+</body>
+</html>
